@@ -14,6 +14,17 @@
 
 
 ### 项目运行
+>#####克隆到本地
+git clone https://github.com/LImengna123/717.git
+
+>##### 安装依赖
+yarn
+
+ >#####开启本地服务器localhost:8080
+yarn run dev
+
+>##### 发布环境
+yarn run build
 
 
 ### 代码块
@@ -35,16 +46,152 @@ new Vue({
     render: h => h(App)
 })
 ```
+### 路由配置
+``` python
+import Vue from "vue"
+import VueRouter from "vue-router"
+import Home from "../components/Home.vue"
+import List from "../components/List.vue"
+
+import ShopCar from "../components/shopCar.vue"
+import My from "../components/mine.vue"
+import Detail from "../components/Detail.vue"
+import Search from "../components/search.vue"
+import Goodsreceipt from "../components/Goodsreceipt.vue"
+Vue.use(VueRouter)
+const routes = [{
+        path: '/',
+        redirect: {
+            name: "home"
+        }
+    },
+    {
+        path: "/home",
+        name: "home",
+        component: Home
+    },
+    {
+        path: "/detail",
+        name: "detail",
+        component: Detail
+    },
+    {
+        path: "/search",
+        name: "search",
+        component: Search
+    },
+    {
+        path: "/list",
+        name: "list",
+        component: List
+    },
+    {
+        path: "/shopCar",
+        name: "shopCar",
+        component: ShopCar
+    },
+    {
+        path: "/my",
+        name: "my",
+        component: My
+    },
+    {
+        path: "/goodsreceipt",
+        name: "Goodsreceipt",
+        component: Goodsreceipt
+    }
+]
+export default new VueRouter({
+    routes: routes
+})
+```
 
 
 
-
-
-
-> **注意：**目前支持尚不完全，在印象笔记中勾选复选框是无效、不能同步的，所以必须在**马克飞象**中修改 Markdown 原文才可生效。下个版本将会全面支持。
-
-
-## 印象笔记相关
+## 配置actions
+``` python
+actions:{
+		add(context,num){
+			context.commit("add",num)
+		}
+	}
+```
+####mutations
+``` python
+mutations:{
+		add(state,num){
+			var flag = true
+			if(state.data==0){
+				state.data.push(num)
+			}else{
+				state.data.forEach((i,val)=>{
+					if(i.id==num.id){
+						flag = false
+						state.data[val].num++ 
+					}
+				})
+				if(flag){
+					state.data.push(num)
+				}
+			}
+		},
+		totle(state,index){
+			let num = 0
+			state.data.forEach((i,val)=>{
+				num +=i.num
+			})
+			state.all = num
+		},
+		sle(state,index){
+			let prices = 0
+			console.log(index)
+			if(index!=undefined){
+				state.data[index].states=!state.data[index].states
+			}
+			state.data.forEach((i,val)=>{
+				if(i.states){
+					prices += i.num * i.price
+				}
+			})
+			state.totle_price = prices.toFixed(2)
+		},
+		show(state,num){
+			let prices = 0
+			state.data.forEach((i,val)=>{
+				i.states = num
+				if(i.states){
+					prices += i.num * i.price
+				}
+			})
+			state.totle_price = prices.toFixed(2)
+		},
+		detal(state){
+			let n = 1;
+			let m = 0;
+			state.data.forEach((i,val)=>{
+				if(i.states){
+					state.data.splice(val,1)
+				}
+			})
+		}
+	}
+```
+##创建store
+``` python
+import Vuex from "vuex"
+import Vue from "vue"
+Vue.use(Vuex)
+export default new Vuex.Store({
+	state:{
+		data:[],
+		detail:{},
+		all:0,
+		totle:2,
+		totle_price:0,
+		show:false
+	},
+})
+```
 
 ### 笔记本和标签
 **马克飞象**增加了`@(笔记本)[标签A|标签B]`语法, 以选择笔记本和添加标签。 **绑定账号后**， 输入`(`自动会出现笔记本列表，请从中选择。
