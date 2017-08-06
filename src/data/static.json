@@ -1,0 +1,62 @@
+{
+    "msg": "1",
+    "info": "index",
+    "list": {
+        "banner": [{
+                "src": "./src/assets/home/banner/home6.png"
+            },
+            {
+                "src": "./src/assets/home/banner/home2.png"
+            },
+            {
+                "src": "./src/assets/home/banner/home3.png"
+            },
+            {
+                "src": "./src/assets/home/banner/home4.png"
+            },
+            {
+                "src": "./src/assets/home/banner/home.png"
+            }
+        ],
+        "nav": [
+            [{
+                    "src": "./src/assets/home/nav/nav1.png",
+                    "detail": "家乡味道"
+                },
+                {
+                    "src": "./src/assets/home/nav/nav2.png",
+                    "detail": "进口食品"
+                },
+                {
+                    "src": "./src/assets/home/nav/nav3.png",
+                    "detail": "牛奶乳品"
+                },
+                {
+                    "src": "./src/assets/home/nav/nav4.png",
+                    "detail": "茶果冲饮"
+                }
+            ],
+            [{
+                    "src": "./src/assets/home/nav/nav5.png",
+                    "detail": "休闲零食"
+                },
+                {
+                    "src": "./src/assets/home/nav/nav6.png",
+                    "detail": "米面粮油"
+                },
+                {
+                    "src": "./src/assets/home/nav/nav7.png",
+                    "detail": "调味调料"
+                },
+                {
+                    "src": "./src/assets/home/nav/nav8.png",
+                    "detail": "酒水饮料"
+                }
+            ]
+        ],
+        "tip": [
+            "7.17安全食品商城周年庆，暑期放价嗨不停！好吃、安全、放心的食品，陪你度假期",
+            "717商城社区服务功能正式上线！抢红包！晒家乡！好吃、好玩、好看尽在717商城社区！"
+        ]
+    }
+}
